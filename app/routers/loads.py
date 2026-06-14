@@ -13,3 +13,8 @@ def get_loads():
     """
     response = supabase.table("appliances").select("*").execute()
     return response.data
+
+@router.get("/readings")
+def get_readings():
+    response = supabase.table("load_readings").select("*").order("timestamp", asc=True).execute()
+    return response.data
